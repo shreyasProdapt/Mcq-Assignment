@@ -1,0 +1,92 @@
+SHREYAS.R 
+
+MCQ ANSWERS: 
+
+1. (4) SUB-QUERY 
+
+2. (3) mysqldump 
+
+3. (3) column-level 
+
+4. (3) --help 
+
+5. (C) PATH 
+
+6. (B) 1 CREATE PROCEDURE P 
+
+           2 BEGIN 
+
+           3 END 
+
+7. (1) ENUM 
+
+8. (4) CREATE TABLE IF NOT EXISTS employee ( 
+
+    employeeID char(10), 
+
+    firstName varchar(50), 
+
+    lastName varchar(50), 
+
+    phone varchar(20), 
+
+    address varchar(50), 
+
+    PRIMARY KEY (employeeID) 
+
+    ); 
+
+9. (2)  IN 
+
+10. (2) SELECT column FROM tbl 
+
+11. (2) ANSI 
+
+12. (4) DESCRIBE table; 
+
+13. (4) SELECT * FROM inventory 
+
+14. (2) configuration files 
+
+15. (3) UNION  
+
+16. (3) the sub-query must return a single value 
+
+17. (1) show grants (displays the privileges and roles that are assigned to a MySQL user account or role) 
+
+ 
+
+18. (4) insert into cars (make, model, year) values ('Ford', 'Mustang', 2002), ('Mercedes', 'C', 2003)   
+
+19. (4) DROP TEMPORARY TABLE customers; 
+
+20. (3) foreign key 
+
+ 
+
+QUERY WRITING: 
+
+1. select * from customers where match(address) against(‘Street’,’Drive’); 
+
+2. create view v as select * from table table_name;  
+
+3. select car.*, purchases.date FROM cars LEFT JOIN purchases ON cars.ID = purchases.carID;
+
+4. First we must create a new table that acts as a reference for superpowers. This table should 
+   have columns which will hold unique codes and descriptions for each superpower. In addition to 
+   this, we must create a separate table that acts as a connection point between the names of 
+   superheroes and the codes representing their powers
+
+QUESTIONS: 
+
+1. SELECT B.color FROM Sailors S JOIN Resreves R ON S.sid = R.sid JOIN Boats B On R.bid=B.bid WHERE sname=`Dustin’; 
+2. SELECT S.sid FROM Sailors S JOIN Reserve R ON S.sid = R.sid WHERE S.rating >= 8 AND R.bid = 103; 
+3. SELECT S.sname FROM Saliors S JOIN Reserves R ON S.sid =R.sid JOIN Boats B ON R.bid =B.bid WHERE B.color <> ‘red’; 
+4. SELECT S.sid FROM Sailors S JOIN Reserves R ON S.sid =R.sid JOIN Boats B ON R.bid = B.bid WHERE B.color <> ‘red’ AND S.age>20; 
+5. SELECT sname FROM (SELECT S.sname Name, COUNT(R.bid) FROM Sailors S JOIN Reserves R ON S.sid = R.sid GROUP BY R.bid HAVING COUNT(*)>=2); 
+6. SELECT S.sname FROM Sailors S JOIN Reserves R ON S.sid = R.bid JOIN Boats B ON R.bid = S.sid; 
+7. SELECT S.sname FROM Sailors S JOIN Reserves R On S.sid = R.sid JOIN Boats B ON R.bid = B.bid Boats B WHERE bname = ‘Interlake’; 
+8. SELECT S.sname FROM Sailors WHERE rating >= (SELECT rating FROM Sailors WHERE sname = ‘Andy’); 
+9. SELECT DISTINCT S.sid FROM Sailors S WHERE S.rating > ALL(SELECT rating FROm Sailors WHERE sname = ‘Andy’); 
+10. SELECT DISTINCT S.sid FROM Sailors S WHERE S.rating = (SELECT MAX(rating) FROM Sailors); 
+11. SELECT S.sname, S.age FROM Sailors S WHERE S.age = (SELECT MAX(age) FROM Sailors)
